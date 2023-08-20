@@ -104,9 +104,10 @@ module.exports = nextConfig;
 #
 
 #### Below I am attaching the image of mainfest.json and icon.png file so you can see the correct level.
+#
 
 ![manifest.json](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*8CmDSnvx-mthlsdjmgHoiw.png)
-
+#
 
 # Then go to the _document.tsx or _document.jsx file of your Repo.
 
@@ -125,7 +126,7 @@ module.exports = nextConfig;
 ##### Below is the image of that code.
 
 ![_document.tsx](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*dntgXrGDUmz0hN00IpJbvQ.png)
-
+#
 
 # Now all done. Let’s build the app with the npm run build.
 ```
@@ -143,12 +144,29 @@ npm run start
 #### Desktop
 
 ![PWA](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*4xGyEJcuUWMHCqPKVMp6FQ.png)
+#
+
+#### Mobile
+
+- Add to Home Screen from Website
+
+![Add to home](https://cdn-images-1.medium.com/max/1600/1*YdizLAwFjthafKlyNsYu1g.jpeg)
+
+#
+
+- PWA from mobile
+
+![pwa-mobile](https://cdn-images-1.medium.com/max/1600/1*v2eulVSqgmKXfvtGxiaEbQ.gif)
+
+#
 
 
 # In case you can’t see the PWA
 
 ![error](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*qrtxx46erHxBxl8oJSAZRQ.png)
 
-#### If you can’t see right-click your browser and click the inspect. Then go to the application tab. Then you can see the errors or warning like below in the Manifest file. That means you did something wrong and please follow the steps correctly again.
+#
+
+##### If you can’t see right-click your browser and click the inspect. Then go to the application tab. Then you can see the errors or warning like below in the Manifest file. That means you did something wrong and please follow the steps correctly again.
 
 
