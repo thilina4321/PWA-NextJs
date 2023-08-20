@@ -1,38 +1,154 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# Create the NextJs App ( Repo )
 
-First, run the development server:
+##### First Create a nextJs application with the below command. I will name the repo as PWA.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+```
+npx create-next-app pwa
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+##### Then install the next-pwa package from npm. You can use the below command.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```
+npm i next-pwa
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+# next.config.json file
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+##### Then check is the next.config.json file available or not. If it is not available create the file at the root level. So now everyone has the next.config.json file. Now edit the file like below.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+#
 
-## Learn More
+```typescript
+// Note : To required('next-pwa') you should install that package as explain
+// above. If you miss that please install it with npm i next-pwa command.
 
-To learn more about Next.js, take a look at the following resources:
+const withPWA = require("next-pwa")({
+  dest: "public",
+  register: true,
+  skipWaiting: true,
+  disable: process.env.NODE_ENV === "development",
+});
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+const nextConfig = withPWA({
+  reactStrictMode: true,
+  swcMinify: true,
+});
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+module.exports = nextConfig;
+```
 
-## Deploy on Vercel
+#
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+##### Below I am adding an image of a next.config.json file. So if anyone can understand it should add in the root level and its code.
+#
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+![next.config.json](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*XCExd5E12Dc8CGtyYBP_vg.png)
+#
+
+# Now go to the public folder of the Repo
+
+
+#### Then follow the below steps.
+
+#
+- create a file called manifest.json inside the public folder. Then add the below code.
+#
+
+```typescript
+//You can change the name, short name, description like properties the way
+// you want. please note icons are very important here.
+// If you did not add it correctly you will get an error and PWA will not
+// work with your project.
+
+{
+  "name": "My Next.js PWA",
+  "short_name": "NextPWA",
+  "description": "A sample Next.js Progressive Web App",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "/icon.png",
+      "sizes": "500x500",
+      "type": "image/png"
+    }
+  ]
+}
+```
+#
+
+#
+- Added an image to the public folder with the correct name and the correct dimensions that you provided in the icons array in the manifest.json file.
+#
+
+
+```typescript
+// If your icons array is look below.
+
+"icons": [
+    {
+      "src": "/icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+
+// You should add an image with 
+// - name icon.png
+// - dimensions - 500x500 (canva can be used to get images with dimensions)
+// - type image/png
+```
+#
+
+#### Below I am attaching the image of mainfest.json and icon.png file so you can see the correct level.
+
+![manifest.json](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*8CmDSnvx-mthlsdjmgHoiw.png)
+
+
+# Then go to the _document.tsx or _document.jsx file of your Repo.
+
+#### Added the below metadata and the link tags inside the <Head> tag.
+
+```typescript
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+{/* make sure to provide the name of your icon in below.*/}
+<link rel="apple-touch-icon" href="/icon.png" />
+<link rel="manifest" href="/manifest.json" />
+```
+
+##### Below is the image of that code.
+
+![_document.tsx](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*dntgXrGDUmz0hN00IpJbvQ.png)
+
+
+# Now all done. Let’s build the app with the npm run build.
+```
+npm run build
+```
+
+##### And start the production server with npm run start.
+
+```
+npm run start
+```
+
+# Now you can see your PWA like below and install it on your desktop or mobile.
+
+#### Desktop
+
+![PWA](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*4xGyEJcuUWMHCqPKVMp6FQ.png)
+
+
+# In case you can’t see the PWA
+
+![error](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*qrtxx46erHxBxl8oJSAZRQ.png)
+
+#### If you can’t see right-click your browser and click the inspect. Then go to the application tab. Then you can see the errors or warning like below in the Manifest file. That means you did something wrong and please follow the steps correctly again.
+
+
