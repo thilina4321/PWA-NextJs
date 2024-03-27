@@ -1,4 +1,4 @@
-# Create the NextJs App ( Repo )
+# Create A NextJs App ( Repo )
 
 ##### First Create a nextJs application with the below command. I will name the repo as PWA.
 
